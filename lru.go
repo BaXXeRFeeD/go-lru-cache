@@ -11,3 +11,9 @@ func New(cap int) Cache {
 		order: list.New(),
 	}
 }
+
+type LruCache struct {
+	cap   int
+	cache map[int]*list.Element
+	order *list.List
+}

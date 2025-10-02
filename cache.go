@@ -5,6 +5,10 @@ package lrucache
 import "container/list"
 
 type Cache interface {
+	// Get returns value associated with the key.
+	//
+	// The second value is a bool that is true if the key exists in the cache,
+	// and false if not.
 	Get(key int) (int, bool)
 	// Set updates value associated with the key.
 	//
@@ -17,12 +21,6 @@ type Cache interface {
 	Range(f func(key, value int) bool)
 	// Clear removes all keys and values from the cache.
 	Clear()
-}
-
-type LruCache struct {
-	cap   int
-	cache map[int]*list.Element
-	order *list.List
 }
 
 type entry struct {
